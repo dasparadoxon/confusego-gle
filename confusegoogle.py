@@ -1,4 +1,5 @@
-# F*CK YOU GOOGLE XD
+# CONFUSE GO*GLE
+# FORMER F*CK YOU GO*GLE XD
 # VERSION 1.1
 #
 # CREATING RANDOM QUERIES
@@ -15,12 +16,13 @@ import webbrowser
 import time
 
 inBrowser = False; # SET THIS TO TRUE IF YOU WANT TO SEE THE RESULTS IN YOUR BROWSER
-wordListFile = 'woerterbuch2.txt' # SET YOUR WORDLIST FILENAME HERE
-logQuery = True 
-numberOfLinesInDictionary = 0
-lines = []
-secondsToWait = 10
-secondsCountedDown = secondsToWait
+wordListFile = 'defaultWordList.txt' # SET YOUR WORDLIST FILENAME HERE
+logQuery = True # SET THIS TO TRUE IF WANT YOUR QUERIES TO BE LOGGED
+numberOfLinesInDictionary = 0 # INTERNAL COUNTER OF WORDS IN DICTINOARY
+lines = [] # INTERNAL GLOBAL BUFFER OF WORDS IN DICTIONARY
+secondsToWait = 30  # EVERY SO AND SO MANY SECONDS TO DO A GOOGLE SEARCH QUERY
+secondsCountedDown = secondsToWait # INTERNTAL COUNTER
+nameOfLogFile = 'logfile.txt';
 
 
 def readDictionary():
@@ -55,7 +57,7 @@ def callGoogle():
 			erg = webpage.read()
 
 		if logQuery == True:
-			f = open('logfile.txt','a')
+			f = open(nameOfLogFile,'a')
 			f.write(wortliste[0]+"+"+wortliste[1]+"+"+wortliste[2]+'\n') # python will convert \n to os.linesep
 			f.close() # you can omit in most cases as the destructor will call if
 
