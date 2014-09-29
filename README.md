@@ -25,7 +25,11 @@ Plans
 - Much more sophisticated and personalised algorithm
 - Mobile Versions
 
+Noticed
+=======
 
+- If you use just one dictionary, Google most of the time recognize that, depending on the words.
+  So thats not very helpfull.
 
 
 
