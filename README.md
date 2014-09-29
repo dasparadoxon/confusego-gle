@@ -12,6 +12,11 @@ Using
 - Python 2.7.x
 - Tkinter (Tcl/Tk)
 
+TODO
+====
+
+Writing Classes out of it and doing packages 
+
 Plans
 *****
 
