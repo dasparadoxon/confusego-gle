@@ -5,7 +5,7 @@ A little python program to confuse go*gles data mining operations.
 
 It sends random generated queries to google in the background. 
 
-Three words every so and so many minutes. 
+Three words every so and so seconds/minutes in a random interval with a max value.
 
 It is under no license except the licenses that I need to apply from the software I am using (python etc.).
 So it is free of use, open source, do with it whatever you want, with absolutly no warranties etc, etc.
@@ -24,7 +24,7 @@ TODO
 Writing Classes out of it and doing packages 
 
 Plans
-*****
+=======
 
 - Nicer GUI
 - Options
