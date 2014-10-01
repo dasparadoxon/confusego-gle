@@ -1,6 +1,6 @@
 # CONFUSE GO*GLE
 # FORMER F*CK YOU GO*GLE XD
-# VERSION 1.1
+# VERSION 1.2
 #
 # CREATING RANDOM QUERIES
 # RUN THIS SCRIPT A FEW TIMES A DAY
@@ -20,7 +20,8 @@ wordListFile = 'defaultWordList.txt' # SET YOUR WORDLIST FILENAME HERE
 logQuery = True # SET THIS TO TRUE IF WANT YOUR QUERIES TO BE LOGGED
 numberOfLinesInDictionary = 0 # INTERNAL COUNTER OF WORDS IN DICTINOARY
 lines = [] # INTERNAL GLOBAL BUFFER OF WORDS IN DICTIONARY
-secondsToWait = 30  # EVERY SO AND SO MANY SECONDS TO DO A GOOGLE SEARCH QUERY
+secondsToWaitAtLeast = 60  # EVERY SO AND SO MANY SECONDS AT LEAST TO DO A GOOGLE SEARCH QUERY
+secondsToWait = 0
 secondsCountedDown = secondsToWait # INTERNTAL COUNTER
 nameOfLogFile = 'logfile.txt';
 
@@ -67,14 +68,22 @@ def GoogleTimer():
     
     global secondsCountedDown
     global secondsToWait
+    global secondsToWaitAtLeast
+	
     secondsUntilToCallGoogleLabel.configure(text=secondsCountedDown)
     secondsCountedDown = secondsCountedDown-1
     if secondsCountedDown==0:
     	callGoogle()
+	secondsToWait = randint(1,secondsToWaitAtLeast-1);
     	secondsCountedDown=secondsToWait
     root.after(1000, GoogleTimer)
 
 root = Tk()
+
+
+secondsToWait = randint(1,secondsToWaitAtLeast-1);
+secondsCountedDown = secondsToWait;
+
 
 secondsUntilToCallGoogleLabel = Label(root, text="Calling Google")
 secondsUntilToCallGoogleLabel.pack()
