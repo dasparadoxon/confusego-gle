@@ -10,7 +10,7 @@ Three words every so and so seconds/minutes in a random interval with a max valu
 It is under no license except the licenses that I need to apply from the software I am using (python etc.).
 So it is free of use, open source, do with it whatever you want, with absolutly no warranties etc, etc.
 
-NOTICE : This program is in the pride tration of monty pythons "Confuse a cat".
+NOTICE : This program is in the pride tradition of monty pythons "Confuse a cat".
 
 Using
 =====
