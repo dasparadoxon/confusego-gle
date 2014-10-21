@@ -17,13 +17,17 @@ import time
 
 inBrowser = False; # SET THIS TO TRUE IF YOU WANT TO SEE THE RESULTS IN YOUR BROWSER
 wordListFile = 'defaultWordList.txt' # SET YOUR WORDLIST FILENAME HERE
-logQuery = True # SET THIS TO TRUE IF WANT YOUR QUERIES TO BE LOGGED
 numberOfLinesInDictionary = 0 # INTERNAL COUNTER OF WORDS IN DICTINOARY
 lines = [] # INTERNAL GLOBAL BUFFER OF WORDS IN DICTIONARY
 secondsToWaitAtLeast = 60  # EVERY SO AND SO MANY SECONDS AT LEAST TO DO A GOOGLE SEARCH QUERY
 secondsToWait = 0
 secondsCountedDown = secondsToWait # INTERNTAL COUNTER
+
+
+#LOGGING
 nameOfLogFile = 'logfile.txt';
+logQuery = True # SET THIS TO TRUE IF WANT YOUR QUERIES TO BE LOGGED
+numberOfQuerysSoFar = 0
 
 
 def readDictionary():
@@ -33,6 +37,14 @@ def readDictionary():
 	    lines = f.read().splitlines()
 
 	numberOfLinesInDictionary = len(lines)
+
+def readLogLines():
+	loglines = []
+	global numberOfQuerysSoFar
+	with open(nameOfLogFile) as f:
+	    loglines = f.read().splitlines()
+
+	numberOfQuerysSoFar = len(loglines)	
 
 def callGoogle():
 
@@ -69,6 +81,8 @@ def GoogleTimer():
     global secondsCountedDown
     global secondsToWait
     global secondsToWaitAtLeast
+    global logQuery
+    global numberOfQuerysSoFar
 	
     secondsUntilToCallGoogleLabel.configure(text=secondsCountedDown)
     secondsCountedDown = secondsCountedDown-1
@@ -76,13 +90,18 @@ def GoogleTimer():
     	callGoogle()
 	secondsToWait = randint(1,secondsToWaitAtLeast-1);
     	secondsCountedDown=secondsToWait
+    	if logQuery==True:
+                global LogLinesLabel
+                numberOfQuerysSoFar = numberOfQuerysSoFar + 1
+                LogLinesLabel.configure(text=numberOfQuerysSoFar)
+                
+ 
     root.after(1000, GoogleTimer)
 
 root = Tk()
 
-
-secondsToWait = randint(1,secondsToWaitAtLeast-1);
-secondsCountedDown = secondsToWait;
+#secondsToWait = randint(1,secondsToWaitAtLeast-1);
+secondsCountedDown = 1
 
 
 secondsUntilToCallGoogleLabel = Label(root, text="Calling Google")
@@ -98,6 +117,13 @@ wordsRun1Label[0].pack()
 
 #wordsRun1Label.append(Label(root,text="Three Words 3"))
 #wordsRun1Label[2].pack()
+
+LogLinesLabel = Label(root, text=numberOfQuerysSoFar)
+
+if logQuery==True:
+        global LogLinesLabel
+        readLogLines();
+        LogLinesLabel.pack()
 
 GoogleTimer()
 
